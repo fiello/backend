@@ -1,0 +1,16 @@
+/**
+ *  \file
+ *  \brief     Common application definitions (application name, version)
+ *  \author    Dmitry Sinelnikov
+ *  \date      2012
+ */
+
+#ifndef COMPILED_DEFINITIONS_H_
+#define COMPILED_DEFINITIONS_H_
+
+// Common configured settings from CMake
+#define CORE_PRODUCT_NAME ("Chat Server")
+#define CORE_VERSION ("@project_VERSION_MAJOR@.@project_VERSION_MINOR@.@project_VERSION_BUILD@")
+#define CORE_NAME ("@core_OUTPUT@")
+
+#endif // #ifndef COMPILED_DEFINITIONS_H_

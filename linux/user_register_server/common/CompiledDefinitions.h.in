@@ -1,0 +1,18 @@
+
+#ifndef COMPILED_DEFINITIONS_H_
+#define COMPILED_DEFINITIONS_H_
+
+// Common configured settings from CMake
+#define CONFIG_FILE ("@server_OUTPUT@.conf") // ini-like config file
+#define SERVER_PRODUCT_NAME ("User Register Server")
+#define SERVER_VERSION ("@server_VERSION_MAJOR@.@server_VERSION_MINOR@.@server_VERSION_PATCH@")
+#define SERVER_NAME ("@server_OUTPUT@")
+#define SERVER_CLOSE_MUTEX ("@server_OUTPUT@-close-mutex")
+#define SERVER_CLOSE_COND ("@server_OUTPUT@-close-cond")
+#define SERVER_MSG_QUEUE ("@server_OUTPUT@-mqueue")
+#define SERVER_MSG_QUEUE_MUTEX ("@server_OUTPUT@-mq-mutex")
+#define SERVER_MSG_QUEUE_COND ("@server_OUTPUT@-mq-cond")
+#define SERVER_SHARED_MEMORY ("@server_OUTPUT@-shared-mem")
+
+
+#endif // #ifndef COMPILED_DEFINITIONS_H_

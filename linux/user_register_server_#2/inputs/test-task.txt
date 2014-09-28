@@ -1,0 +1,52 @@
+Functionality specification:
+
+develop a simple backend server that implements a protocol for registering a username and checking existence of an username from a file
+
+ * server should respond to following queries:
+  * REGISTER username=<username>;email=<email> - register new username+email in file
+   * possible responses: 
+    * 200 OK (username was registered ok) 
+    * 409 Conflict (the username already exists) 
+  * GET username=<username> - check existence of username in file
+   * possible responses: 
+    * 200 email=<email>
+    * 404 Not Found (username does not exist in file) 
+
+ * server should respond with "406 Not Acceptable" when e-mail or username is invalid or contains invalid characters
+ * server should respond with "405 Overloaded" to REGISTER request when there are more than 100 records in file
+ * server should respond with "400 Bad request" for all other queries
+ * server should respond with "503 Service unavailable" when file is inaccessible or doesn't exist
+ * server should "sleep" for configured amount of time before responsing to client (needed in order to be able to test how the server handles multiple simultaneous connections)
+ * requests/responses consist of single line, terminated with \r\n
+ * server should accept client connections over TCP and UDP
+ * server should accept multiple requests in the same TCP connection (server should not close the TCP connection after processing a request) and connection closure should never be initiated by the server (only exception is server shutdown)
+
+Server configuration options:
+ * daemon/non-daemon mode
+ * TCP port
+ * UDP port
+ * TCP bind interface/ip
+ * UDP bind interface/ip
+ * sleep time before sending response (0..xxxx milliseconds)
+ * optional(plus): log levels (0=DEBUG, 1=WARN, 2=ERROR, 3=FATAL)
+ * optional(plus): server options reconfigurable at runtime without restarting the process (except listening ports, daemon mode)
+ * optional(plus): maintenance mode option (file deleted, queue requests until reconfigured to resume processing)
+ * see attachment:sample.conf for options
+
+Environment:
+ * OS: Linux
+ * programming language: C++ (g++ 4), must be compilable with -Wall -Werror -pedantic -Wno-long-long
+ * libraries: use standard C++ libraries (STL)
+ * optional: Boost libraries (http://www.boost.org), it's not allowed to use ASIO library from there
+ * don't use any other third party library (or please consult before using)
+
+Generic quality/scaling requirements:
+ * the server process should be able to run as a daemon
+ * the process should keep a debug log of its activities in same directory where it was started
+ * server should be robust and reliable (e.g it should not crash upon invalid data from client or corrupt filesystem, but rather log the invalid data and ignore request)
+ * must be able to handle heavy load (hundreds of requests per second, ability to accept simultaneous requests)
+ * must be scalable on multi-processor machines,must be implemented using threads (thread-per-request and thread-per-client models are NOT allowed, please ask if clarification needed)
+ * data must be read on every request from filesystem (ie. records CAN NOT be cached)
+ * data file might be on a network file system, it means reading from/writing to the data file can take considerable amount of time
+ * the process should survive filesystem errors - ie. it should continue if data file is unaccessible/deleted (error cases must be logged)
+ * file with data, see attachment: data.txt

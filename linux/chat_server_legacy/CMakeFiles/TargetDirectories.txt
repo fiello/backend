@@ -1,0 +1,4 @@
+/home/vdi/SVN/Klarna_ChatServer/server/CMakeFiles/chat-server.dir
+/home/vdi/SVN/Klarna_ChatServer/config/CMakeFiles/config.dir
+/home/vdi/SVN/Klarna_ChatServer/ipc/CMakeFiles/ipc.dir
+/home/vdi/SVN/Klarna_ChatServer/logger/CMakeFiles/logger.dir

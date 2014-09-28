@@ -1,0 +1,2 @@
+/usr/bin/ar cr libipc.a  CMakeFiles/ipc.dir/IPCModule.cpp.o CMakeFiles/ipc.dir/ThreadPoolModule.cpp.o
+/usr/bin/ranlib libipc.a

@@ -1,0 +1,12 @@
+
+#ifndef COMPILED_DEFINITIONS_H_
+#define COMPILED_DEFINITIONS_H_
+
+// Common configured settings from CMake
+#define CONFIG_FILE ("@server_OUTPUT@.conf") // ini-like config file
+#define SERVER_PRODUCT_NAME ("Chat Server")
+#define SERVER_VERSION ("@server_VERSION_MAJOR@.@server_VERSION_MINOR@.@server_VERSION_PATCH@")
+#define SERVER_NAME ("@server_OUTPUT@")
+#define SERVER_QUEUE ("@server_OUTPUT@-queue")
+
+#endif // #ifndef COMPILED_DEFINITIONS_H_
